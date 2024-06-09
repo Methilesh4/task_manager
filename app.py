@@ -30,7 +30,7 @@ def render():
         return  render_template("login.html")
 @app.route('/signup', methods=['GET', 'POST'])
 def render_signup():
-     if 'email' in session:  
+      
         return  render_template("signup.html")
 @app.route('/login', methods=['GET', 'POST'])
 def login():
