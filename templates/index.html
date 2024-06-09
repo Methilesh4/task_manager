@@ -86,10 +86,10 @@
       }</script>
     
 </head>
-<body>
+<body style="color: black;">
     <div class="wrapper">
         <main>
-            <div class="search">
+            <!-- <div class="search">
                 <input type="text" class="search__input" placeholder="Type your text">
                 <button class="search__button">
                     <svg class="search__icon" aria-hidden="true" viewBox="0 0 24 24">
@@ -98,20 +98,37 @@
                         </g>
                     </svg>
                 </button>
-            </div>
-            <h1 style="text-align: center;">Today's Task</h1>
-            <h4 style="text-align: center;">June 9,2024</h4>
+            </div> -->
+            <h1 style="text-align: center;">Task Manager</h1>
+            
             <content>
                 <list>
                     {% for name in info%}
                <card>
                 <p>{{name}}</p>
-                <i class="fa fa-trash"></i>
+                <form action="http://127.0.0.1:5000/delete" method="post">
+                    <button name="del" type="submit" value={{name}} > <i class="fa fa-trash" ></i></button>
+                    
+                </form>
+                {%if (info[name]["status"]=="completed")%}
+                <form action="http://127.0.0.1:5000/update_status" method="post">
+                    
+                    <button name="del" type="submit" value={{name}} ><i class="fa fa-check" style="color: #04AA6D;"></i></button>
+                    
+                </form>
+                {%else%}
+                <form action="http://127.0.0.1:5000/update_status" method="post">
+                    
+                    <button name="del" type="submit" value={{name}} > <i class="fa fa-check" ></i></button>
+                    
+                </form>
+                {% endif %}
+
                 
-                <i class="fa fa-check"></i>
-                <p>Due:{{info[name]["due"]}} {{info[name]["time"]}}</p>
-                <i class="menu__icon fa fa-user" ></i>
                 <p>{{info[name]["details"]}}</p>
+                <p>Due:{{info[name]["due"]}} {{info[name]["time"]}}</p>
+                
+                
 
                </card>
                {% endfor %} 
@@ -148,20 +165,8 @@
           
           <nav class="menu" id="menu">
            
-            <a class="menu__item menu__item--active" href="#">
-              <i class="menu__icon fa fa-list"></i>
-              
-              
-            </a>
-            <a class="menu__item" href="#">
-              <i class="menu__icon fa fa-calendar"></i>
-              
-            </a>
-            <a class="menu__item" href="#">
-              <i class="menu__icon fa fa-bar-chart"></i>
-              
-            </a>
-            <a class="menu__item" href="#">
+            
+            <a class="menu__item" href="http://127.0.0.1:5000/logout">
               <i class="menu__icon fa fa-user"></i>
               
             </a>
