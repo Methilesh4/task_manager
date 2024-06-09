@@ -1,0 +1,38 @@
+content {
+    background-color: white;
+    box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.2);
+    
+    display: grid;
+    grid-template-columns: 6fr;
+    grid-template-rows: 0fr 1fr;
+
+  }
+  list {
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+   
+    
+  }
+  card {
+    background-color: white;
+    box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.2);
+    margin: 30px;
+    display: grid;
+    border-radius: 30px;
+    width:60%;
+    grid-template-columns: 8fr 1fr  1fr;
+    grid-template-rows: 2fr;
+    padding: 30px;
+    align-items: center;
+
+  }
+
+ 
+  
+  card i{
+    padding: 10px;
+  }
