@@ -10,4 +10,5 @@ for (var i = 0; i < btns.length; i++) {
     current[0].className = current[0].className.replace(" menu__item--active", "");
     this.className += " menu__item--active";
   });
+
 }

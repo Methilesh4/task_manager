@@ -4,7 +4,7 @@ content {
     
     display: grid;
     grid-template-columns: 6fr;
-    grid-template-rows: 0fr 1fr;
+    grid-template-rows: 1fr;
 
   }
   list {
@@ -13,7 +13,7 @@ content {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    align-items: center;
+   
    
     
   }
@@ -36,3 +36,5 @@ content {
   card i{
     padding: 10px;
   }
+
+  

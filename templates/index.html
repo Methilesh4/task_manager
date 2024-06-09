@@ -8,7 +8,82 @@
     <link rel="stylesheet" href="../static/css/content.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
- 
+    <style>
+        .open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    border-radius: 20px;
+  }
+  
+  /* The popup form - hidden by default */
+  .form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+  .form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  /* When the inputs get focus, do something */
+  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: red;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+  
+    </style>
+       <script>function openForm() {
+        document.getElementById("myForm").style.display = "block";
+      }
+      
+      function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+      }</script>
     
 </head>
 <body>
@@ -28,27 +103,54 @@
             <h4 style="text-align: center;">June 9,2024</h4>
             <content>
                 <list>
-               <card >
-                <p>Task 1</p>
+                    {% for name in info%}
+               <card>
+                <p>{{name}}</p>
                 <i class="fa fa-trash"></i>
                 
                 <i class="fa fa-check"></i>
-                <p>Due:June 20,2024 5pm</p>
+                <p>Due:{{info[name]["due"]}} {{info[name]["time"]}}</p>
                 <i class="menu__icon fa fa-user" ></i>
-                <p>ongoing</p>
+                <p>{{info[name]["details"]}}</p>
 
                </card>
+               {% endfor %} 
             
             </list>
+            <!-- {{updation}} -->
+            <button class="open-button" onclick="openForm()">Add Task</button>
+            <div class="form-popup" id="myForm">
+                <form action="http://127.0.0.1:5000/update" class="form-container" method="post">
+                  <h1>Task Details</h1>
+              
+                  <label for="tname"><b>Task Name</b></label>
+                  <input type="text" placeholder="Task Name" name="tname" required>
+              
+                  <label for="details"><b>Detail</b></label>
+                  <input type="text" placeholder="Task Details" name="details" required>
+
+                  <label for="due"><b>Due Date(dd/mm/yy)</b></label>
+                  <input type="text" placeholder="Task Due Date" name="due" required>
+                   
+                  <label for="time"><b>Due Time(hh pm/am)</b></label>
+                  <input type="text" placeholder="Task Due Time" name="time" required>
+
+                  <button type="submit" class="btn">Add</button>
+                  <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </form>
+              </div>
+            
             </content>
+            
         </main>
         
         <sidebar>
           
           <nav class="menu" id="menu">
            
-            <a class="menu__item" href="#">
+            <a class="menu__item menu__item--active" href="#">
               <i class="menu__icon fa fa-list"></i>
+              
               
             </a>
             <a class="menu__item" href="#">
@@ -69,5 +171,6 @@
         </sidebar>
       </div>
       <script src="../static/js/nav.js"></script>
+
 </body>
 </html>

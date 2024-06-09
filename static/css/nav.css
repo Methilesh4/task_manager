@@ -44,20 +44,15 @@
   
   
   
-  /* COSMETIC STYLING */
-  
-  :root {
-    --red: #ED5454;
-  }
-  
+ 
   body {
     font-family: Montserrat;
     font-weight: 100;
-    color: #A8B2B9;
     margin: 0px;
   }
   
   sidebar {
+    color: #A8B2B9;
     background-color: white;
     box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.2);
   }
@@ -77,19 +72,24 @@
     text-decoration: none;
     transition: color ease 0.3s;
   }
+ 
   
   .menu__item--active .menu__icon{
-    color: var(--red);
+    color: black;
   }
 
   
   .menu__item:hover {
     color: black;
+    
+
   }
+ 
   
   
   .menu__icon {
     font-size: 1.3rem;
+    /* color: #A8B2B9; */
   }
   .search {
     display: flex;
